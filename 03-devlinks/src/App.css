@@ -1,0 +1,19 @@
+:root{
+    --bg-url:url(./assets/light.jpg);
+    --text-color: #000;
+    --stroke-color:rgba(0,0,0,0.5);
+    --surface-color:rgba(0,0,0,0.1);
+    --surface-color-hover:rgba(0,0,0,0.4);
+    --switch-color-url: ;
+    --highlight-color: rgba (0,0,0,0.2);
+
+}
+
+#App{
+height: 100vh;
+background-image: var(--bg-url);
+background-repeat: no-repeat;
+background-position: top center;
+background-size: cover;
+color: var(--text-color);
+}
