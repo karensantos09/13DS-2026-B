@@ -10,6 +10,12 @@
 }
 #App{
     height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    gap: 20px;
+
     font-family: "Inter", sans-se;
     color: var(--text-color);
     background-image: var(--bg-url);
@@ -17,4 +23,23 @@
     background-position: top center;
     background-size: cover;
     color: var(--text-color);
+}
+
+#link ul{
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 24px;
+}
+
+#SocialLinks{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    & a {
+    color: var(--text-color);
+    font-size: x-large
+    }
 }
