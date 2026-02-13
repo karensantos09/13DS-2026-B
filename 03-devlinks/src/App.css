@@ -1,12 +1,22 @@
 :root{
-    --bg-url:url(./assets/light.jpg);
+    --bg-url:url(./assets/dark.jpg);
+    --text-color: #fff;
+    --stroke-color:rgba(225,225,225, 0.5);
+    --surface-color:rgba(225,225,225,0.1);
+    --surface-color-hover:rgba(225,225,225,0.4);
+    --switch-bg-url:url(assets/sol copy.svg) ;
+    --highlight-color: rgba (225,225,225,0.2);
+
+}
+
+.light{
+    --bg-url:url(assets/light.svg);
     --text-color: #000;
     --stroke-color:rgba(0,0,0,0.5);
     --surface-color:rgba(0,0,0,0.1);
     --surface-color-hover:rgba(0,0,0,0.4);
-    --switch-color-url: ;
+    --switch-bg-url:url(assets/sol copy.svg) ;
     --highlight-color: rgba (0,0,0,0.2);
-
 }
 #App{
     height: 100vh;
@@ -15,7 +25,6 @@
     flex-direction: column;
     justify-items: center;
     gap: 20px;
-
     font-family: "Inter", sans-se;
     color: var(--text-color);
     background-image: var(--bg-url);
@@ -25,12 +34,20 @@
     color: var(--text-color);
 }
 
-#link ul{
-    list-style: none;
+#link {
     display: flex;
-    flex-direction: column;
-    gap: 16px;
-    padding: 24px;
+    justify-content: center;
+
+    & ul{
+        width: 100%;
+        max-width: 588px;
+
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        padding: 24px;
+    }
 }
 
 #SocialLinks{
