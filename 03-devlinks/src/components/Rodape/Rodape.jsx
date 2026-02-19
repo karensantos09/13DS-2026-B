@@ -1,13 +1,14 @@
-import React from 'react'
-import "./Rodape.module.css"
+import React from "react";
+import "./Rodape.module.css";
 
-const Rodape = ({children}) => {
+const Rodape = ({ children }) => {
   return (
     <footer>
-    <p>Feito com 🤍, por <a href="https://github.com">{children} </a>
-    </p>  
+      <p>
+        Feito com 🤍 por <a href="https://github.com">{children}</a>
+      </p>
     </footer>
   );
 };
 
-export default Rodape
+export default Rodape;

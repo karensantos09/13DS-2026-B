@@ -1,7 +1,6 @@
 import React from "react";
 
-
-const SocialLink = ({url, icon}) => {
+const SocialLink = ({ url, icon }) => {
   return (
     <a href={url}>
       <ion-icon name={icon}></ion-icon>
@@ -9,4 +8,4 @@ const SocialLink = ({url, icon}) => {
   );
 };
 
-export default SocialLink
+export default SocialLink;
