@@ -36,7 +36,7 @@ function App() {
         <SocialLink url={"https://youtube.com"} icon={"logo-youtube"} />
         <SocialLink url={"https://br.linkedin.com/"} icon={"logo-linkedin"} />
       </div>
-      <Rodape>Karen Santos</Rodape>
+      <Rodape>KarenSantos</Rodape>
     </div>
   );
 }
