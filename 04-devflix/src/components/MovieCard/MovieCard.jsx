@@ -33,6 +33,7 @@ const toggleModal = () => {
       {isModalOpen &&
       <MovieDescription 
       apiUrl={props.apiUrl}
+      movieID={props.imdbID}
       click={toggleModal}
       
       />
