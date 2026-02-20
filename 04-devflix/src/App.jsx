@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 
 import logo from "./assets/devflix.png";
 import lupa from "./assets/search.svg";
 
 import Rodape from "./components/Rodape/Rodape";
+import MovieCard from "./components/MovieCard/MovieCard";
 
 const App = () => {
   const [movies, setMovies] = useState([]);
@@ -13,42 +14,43 @@ const App = () => {
   const apiKey = import.meta.env.VITE_OMDB_API_KEY;
   const apiUrl = `https://omdbapi.com/?apikey=${apiKey}`;
 
+  //Criando a conexão com a API e trazendo informações
+  const searchMovies = async (title) => {
+    const response = await fetch(`${apiUrl}&s=${title}`);
+    const data = await response.json();
 
-  //Criando a conexão com a API e trazendo informações.
- const searchMovies= async (title) => {
-  const response = await fetch(`${apiUrl}&s=${title}`);
-   const data = await response.json;
+    //Alimentando a variavel movies
+    setMovies(data.Search);
+  };
 
-//Alimentando a váriavel movies
-setMovies(data.Search);
- }
-
- useEffect(( =>{
-  searchMovies("Batman");
- }, [] );
+  useEffect(() => {
+    searchMovies("Mickey Mouse");
+  }, []);
 
   return (
     <div id="App">
       <img
         id="Logo"
         src={logo}
-        alt="Logo original do serviço de streaming DEVFLIX com letras vermelhas e fundo preto, ideal para quem busca entretenimento digital de qualidade."
+        alt="Logotipo do serviço de streaming Devflix, com letras vermelhas e fundo preto, promovendo conteúdo de séries, filmes e entretenimento online."
       />
 
       <div className="search">
-        <input type="text" placeholder="Pesquise por filmes e séries" />
-        <img role="button" src={lupa} alt="Botão de ação para pesquisa!" />
+        <input type="text" placeholder="Pesquise por filmes" />
+        <img src={lupa} alt="Botão de ação para pesquisa!" />
       </div>
 
+      {movies?.length > 0 ? (
+        <div className="container">
+          {movies.map((movie, index) => (
+            <MovieCard key={index} {...movie} />
+          ))}
+        </div>
+      ) : (
+        <h2 className="empty">Filme não encontrado 😭</h2>
+      )}
 
-<div className="container">
-{movies.map(movie, index) =>(
-
-  
-)}
-</div>
-
-      <Rodape link={"https://github.com/karensantos09"}>KarenSantos</Rodape>
+      <Rodape link={"https://github.com/ProfCastello"}>KarenSantos</Rodape>
     </div>
   );
 };
