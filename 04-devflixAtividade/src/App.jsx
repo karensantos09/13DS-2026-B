@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 
-import logo from "./assets/devflix.png";
+import logo from "./assets/loogo.png";
 import lupa from "./assets/search.svg";
 
 import Rodape from "./components/Rodape/Rodape";
@@ -28,21 +28,19 @@ const App = () => {
     (async () => {
       await searchMovies(""); /*Termo para pesquisa, ao carregar o site*/
     })();
-  },
-  
-  []);
+  }, []);
 
   return (
     <div id="App">
       <img
         id="Logo"
         src={logo}
-        alt="Logotipo do serviço de streaming Devflix, com letras vermelhas e fundo preto, promovendo conteúdo de séries, filmes e entretenimento online."
+        alt="Logotipo do serviço de streaming kflix, com letras vermelhas e fundo preto, promovendo conteúdo de séries, filmes e entretenimento online."
       />
 
       <div className="search">
         <input
-        onKeyDown={(e) => e.key === "Enter" && searchMovies(search)}
+          onKeyDown={(e) => e.key === "Enter" && searchMovies(search)}
           onChange={(e) => setSearch(e.target.value)}
           type="text"
           placeholder="Pesquise por filmes"
@@ -61,7 +59,7 @@ const App = () => {
           ))}
         </div>
       ) : (
-        <h2 className="empty">Filme não encontrado 😭</h2>
+        <h2 className="empty">Filme não encontrado, tente novamente!</h2>
       )}
 
       <Rodape link={"https://github.com/karensantos09"}>KarenSantos</Rodape>
