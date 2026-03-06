@@ -116,7 +116,7 @@ const App = () => {
         </div>
       )}
 
-      <Rodape link={"https://github.com/karensantos09"}>
+      <Rodape link={"https://www.instagram.com/karen_cdss"}>
         KarenSantos
       </Rodape>
 
