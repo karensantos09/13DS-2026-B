@@ -21,13 +21,13 @@ const App = () => {
       search: "Pesquise por filmes",
       notFound: "Filme não encontrado, tente novamente!",
       langBtn: "EN",
-      close: "Fechar"
+      close: "Fechar",
     },
     en: {
       search: "Search movies",
       notFound: "Movie not found, try again!",
       langBtn: "PT",
-      close: "Close"
+      close: "Close",
     },
   };
 
@@ -53,7 +53,6 @@ const App = () => {
 
   return (
     <div id="App">
-
       {/* BOotão tema */}
       <button onClick={() => setDark(!dark)}>
         {dark ? "☀️ Light" : "🌙 Dark"}
@@ -116,10 +115,7 @@ const App = () => {
         </div>
       )}
 
-      <Rodape link={"https://www.instagram.com/karen_cdss"}>
-        KarenSantos
-      </Rodape>
-
+      <Rodape link={"https://www.instagram.com/karen_cdss"}>KarenSantos</Rodape>
     </div>
   );
 };
