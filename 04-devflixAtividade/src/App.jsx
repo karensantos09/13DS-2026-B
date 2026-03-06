@@ -11,58 +11,115 @@ const App = () => {
   const [movies, setMovies] = useState([]);
   const [search, setSearch] = useState("");
 
-  //Utilizando uma CHAVE de API do arquivo .env
+  const [dark, setDark] = useState(false);
+  const [lang, setLang] = useState("pt");
+
+  const [selectedMovie, setSelectedMovie] = useState(null);
+
+  const textos = {
+    pt: {
+      search: "Pesquise por filmes",
+      notFound: "Filme não encontrado, tente novamente!",
+      langBtn: "EN",
+      close: "Fechar"
+    },
+    en: {
+      search: "Search movies",
+      notFound: "Movie not found, try again!",
+      langBtn: "PT",
+      close: "Close"
+    },
+  };
+
   const apiKey = import.meta.env.VITE_OMDB_API_KEY;
   const apiUrl = `https://omdbapi.com/?apikey=${apiKey}`;
 
-  //Criando a conexão com a API e trazendo informações
   const searchMovies = async (title) => {
     const response = await fetch(`${apiUrl}&s=${title}`);
     const data = await response.json();
 
-    //Alimentando a variavel movies
     setMovies(data.Search);
   };
 
   useEffect(() => {
     (async () => {
-      await searchMovies(""); /*Termo para pesquisa, ao carregar o site*/
+      await searchMovies("");
     })();
   }, []);
 
+  useEffect(() => {
+    document.body.className = dark ? "dark" : "light";
+  }, [dark]);
+
   return (
     <div id="App">
-      <img
-        id="Logo"
-        src={logo}
-        alt="Logotipo do serviço de streaming kflix, com letras vermelhas e fundo preto, promovendo conteúdo de séries, filmes e entretenimento online."
-      />
 
+      {/* BOotão tema */}
+      <button onClick={() => setDark(!dark)}>
+        {dark ? "☀️ Light" : "🌙 Dark"}
+      </button>
+
+      {/* Botão linguagem */}
+      <button
+        className="langBtn"
+        onClick={() => setLang(lang === "pt" ? "en" : "pt")}
+      >
+        {textos[lang].langBtn}
+      </button>
+
+      {/* Logo */}
+      <img id="Logo" src={logo} alt="Logotipo do serviço de streaming kflix" />
+
+      {/* Pesquisa */}
       <div className="search">
         <input
           onKeyDown={(e) => e.key === "Enter" && searchMovies(search)}
           onChange={(e) => setSearch(e.target.value)}
           type="text"
-          placeholder="Pesquise por filmes"
+          placeholder={textos[lang].search}
         />
+
         <img
           onClick={() => searchMovies(search)}
           src={lupa}
-          alt="Botão de ação para pesquisa!"
+          alt="Botão de pesquisa"
         />
       </div>
 
       {movies?.length > 0 ? (
         <div className="container">
           {movies.map((movie, index) => (
-            <MovieCard key={index} {...movie} apiUrl={apiUrl} />
+            <div key={index} onClick={() => setSelectedMovie(movie)}>
+              <MovieCard {...movie} apiUrl={apiUrl} />
+            </div>
           ))}
         </div>
       ) : (
-        <h2 className="empty">Filme não encontrado, tente novamente!</h2>
+        <h2 className="empty">{textos[lang].notFound}</h2>
       )}
 
-      <Rodape link={"https://github.com/karensantos09"}>KarenSantos</Rodape>
+      {/* MODAL */}
+      {selectedMovie && (
+        <div className="modalBackground">
+          <div className="modal">
+            <img src={selectedMovie.Poster} alt={selectedMovie.Title} />
+
+            <h2>{selectedMovie.Title}</h2>
+
+            <p>Ano: {selectedMovie.Year}</p>
+            <p>Tipo: {selectedMovie.Type}</p>
+
+            <button onClick={() => setSelectedMovie(null)}>
+              {textos[lang].close}
+            </button>
+          </div>
+        </div>
+      )}
+
+      <Rodape link={"https://github.com/karensantos09"}>
+        KarenSantos
+      </Rodape>
+
     </div>
   );
 };
