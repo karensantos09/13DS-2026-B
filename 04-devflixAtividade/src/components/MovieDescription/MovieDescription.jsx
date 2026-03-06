@@ -43,7 +43,7 @@ const MovieDescription = (props) => {
                 target="_blank"
                 rel="noreferrer"
               >
-                ▶️
+                ▶️ Assistir
               </a>
             </div>
           </div>
