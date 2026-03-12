@@ -25,8 +25,12 @@ const App = () => {
   };
 
   useEffect(() => {
-    searchMovies(""); /*Termo para pesquisa, ao carregar o site*/
-  }, []);
+    (async () => {
+      await searchMovies(""); /*Termo para pesquisa, ao carregar o site*/
+    })();
+  },
+  
+  []);
 
   return (
     <div id="App">
